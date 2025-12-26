@@ -35,24 +35,25 @@ If you want to run ComfyUI on GKE and use these custom nodes, follow the [ComfyU
        - Go to ComfyUI Manager --> Custom Node Manager --> search for `google_genmedia`. Click Install.
 
      - **Manual installation using git**
-       - Open the terminal on the machine running your ComfyUI and change to the custom_nodes folder.
+       - Open the terminal on the machine that is running ComfyUI and change to the directory where ComfyUI is running from.
+            ```sh
+            cd PATH_TO_COMFYUI_INSTALLATION
+            ```
+       - Change to the custom_nodes folder.
          ```sh
-          cd /path/to/ComfyUI/custom_nodes
+          cd ComfyUI/custom_nodes
           ```
+          
        - Clone this repository in the custom_nodes folder:
          ```sh
          git clone https://github.com/GoogleCloudPlatform/comfyui-google-genmedia-custom-nodes
          ```
        - Install python packages:
-          1.  In ComfyUI, open the logs, click the terminal window. If you see a similar message as below, it indicates that the ComfyUI is running in a python virtual environment. If you don't see such message, go to `step c` directly.
-              ```sh
-              source path/to/your/virtualenv/bin/activate
-              ```
-          2. Activate your python virtual env
+          1. If you are running ComfyUI in a python virtual environment, activate it before installing the dependencies.
               ```shREADME.md
-                source path/to/your/virtualenv/bin/activate
+                source <PATH_TO_PYTHON_VIRTUAL_ENVIRONMENT>/bin/activate
               ```
-          3. Install python packages
+          2. Install python packages
               ```sh
               pip install -r google_genmedia/requirements.txt
               ```
