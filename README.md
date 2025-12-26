@@ -698,7 +698,7 @@ Here is a GIF showing the various workflows in action,
     ```sh
     mv comfyui-google-genmedia-custom-nodes/sample-workflows/input-images/* .../input/
     ```
-5. Open ComfyUI manager,click Custom Nodes Manager and search for ComfyUI-VideoHelperSuite and install the latest version. This is required as we use some of the VHS nodes in the example workflows.
-6. Restart ComfyUI via ComfyUI manager or manually. Check in the left side menu under workflows, the new .json workflow files should be present now. You can click on the files to load the workflows and then `RUN` them.
+5. Open ComfyUI manager,click Custom Nodes Manager and search for `ComfyUI-VideoHelperSuite` and install the latest version. Then search for `ComfyUI-Custom-Scripts` and install the latets version. These are required as we use these custom nodes in the example workflows.
+7. Restart ComfyUI via ComfyUI manager or manually. Check in the left side menu under workflows, the new .json workflow files should be present now. You can click on the files to load the workflows and then `RUN` them.
     >> Note that some of these workflows require an input parameter `output_gcs_uri`. This is required in scenarios such as when you are generating a lossless video using veo3 and the APIs can not return a huge video file so it expects an output bucket to be provided as input where it saves the output video. The custom node will throw an interactive error saying `output_gcs_uri` must be provided.
     If you encounter such situation, provide the bucket in the input parameter `output_gcs_uri` in the format `gs://YOUR_BUCKET_NAME` to the custom nodes. If you do not have a GCS bucket, create it in your Google Cloud project first.
