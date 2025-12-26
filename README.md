@@ -55,7 +55,7 @@ If you want to run ComfyUI on GKE and use these custom nodes, follow the [ComfyU
               ```
           2. Install python packages
               ```sh
-              pip install -r google_genmedia/requirements.txt
+              pip install -r comfyui-google-genmedia-custom-nodes/requirements.txt
               ```
 
 2. Now that the custom nodes are installed, set up authentication with Google Cloud. This is needed because the custom nodes will use Vertex AI APIs in the given Google Cloud project and region. Choose one of the following authentication methods:
