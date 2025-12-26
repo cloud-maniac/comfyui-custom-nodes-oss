@@ -12,6 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# This is a preview version of Google GenAI custom nodes
+
 import base64
 import io
 import mimetypes

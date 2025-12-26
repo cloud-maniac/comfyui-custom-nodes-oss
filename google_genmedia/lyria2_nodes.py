@@ -12,6 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# This is a preview version of Lyria2 custom node
+
 from typing import Any, Dict, Optional, Tuple
 
 from .constants import LYRIA2_MAX_SAMPLES, MAX_SEED

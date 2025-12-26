@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# This is a preview version of Google GenAI custom nodes
+# This is a preview version of Imagen3 custom node3
 
 from typing import Any, Dict, List, Optional, Tuple
 

@@ -14,7 +14,7 @@
 * limitations under the License.
 */
 
-// This is a preview version of veo custom node
+// This is a preview version of Google GenAI custom nodes
 
 import { app } from "../../../scripts/app.js";
 

@@ -12,9 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# This is a preview version of veo2 custom node
-# Copyright 2025 Google LLC
-# (license header)
+# This is a preview version of Lyria2 custom node
 
 from typing import Optional
 

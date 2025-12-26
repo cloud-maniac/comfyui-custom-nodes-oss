@@ -2,6 +2,8 @@ This is not an officially supported Google product. This project is not
 eligible for the [Google Open Source Software Vulnerability Rewards
 Program](https://bughunters.google.com/open-source-security).
 
+This is a preview version of Google GenAI custom nodes for ComfyUI.
+
 # ComfyUI custom nodes for Google GenMedia
 
 This repository contains ComfyUI custom nodes for the following Google GenMedia models:
