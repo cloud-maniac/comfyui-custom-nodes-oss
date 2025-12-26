@@ -37,7 +37,9 @@ If you want to run ComfyUI on GKE and use these custom nodes, follow the [ComfyU
      - **Manual installation using git**
        - Open the terminal on the machine that is running ComfyUI and change to the directory where ComfyUI is running from.
             ```sh
-            cd PATH_TO_COMFYUI_INSTALLATION
+            cd <PATH_TO_COMFYUI_INSTALLATION>
+
+            E.g if your ComfyUI is running from "/home/user/username/ComfyUI", replace <PATH_TO_COMFYUI_INSTALLATION> with "/home/user/username/"
             ```
        - Change to the custom_nodes folder.
          ```sh
@@ -70,7 +72,7 @@ If you want to run ComfyUI on GKE and use these custom nodes, follow the [ComfyU
       .....
       2.8 seconds: /home/comfyuser/comfy/ComfyUI/custom_nodes/google-genmedia
    ```
-4. You are all set! Start using the custom nodes. Right click on ComfyUI, Click the 'Add node' menu and you should see a category named `Google AI` with custom nodes for Google’s genmedia models as show in the image below. **You will need to pass a GCP project id and GCP region as input parameter to every node if you are using the custom nodes from your local ComfyUI installation**.
+4. You are all set! Start using the custom nodes. Right click on ComfyUI, Click the 'Add node' menu and you should see a category named `Google AI` with custom nodes for Google’s genmedia models as shown in the image below. **You will need to pass a GCP project id and GCP region as input parameter to every node if you are using the custom nodes from your local ComfyUI installation**.
  ![menu](workflow-snapshots/menu.png)
 1. **Optional step** : If you are not familiar with Google's GenMedia custom nodes, we provide some sample workflows with this repo that shows how to use the nodes. You can download and use the sample workflows by following the steps in [Sample Workflows](#sample-workflows) section. For full set of features and input parameters to each node, see [Node features ](#node-features)section for more details.
    
@@ -117,7 +119,7 @@ If you want to run ComfyUI on GKE and use these custom nodes, follow the [ComfyU
     --member="serviceAccount:${SERVICE_ACCOUNT_ID}@${PROJECT_ID}.iam.gserviceaccount.com" \
     --role="roles/aiplatform.user" --condition=None
     ```
-- Grant the Service Account Token Creator role to your user on the service account. This role lets your user account to assume the Service Account created in previous steps: 
+- Grant the Service Account Token Creator role to your user on the service account. This role lets your user account to impersonate the Service Account created in previous steps: 
     ```sh
     gcloud iam service-accounts add-iam-policy-binding \
     ${SERVICE_ACCOUNT_ID}@${PROJECT_ID}.iam.gserviceaccount.com \
@@ -667,8 +669,8 @@ This node handles the display and persistence of generated videos. It allows you
 
 ### Sample Workflows
 
-Here is a GIF showing the workflows in action,
-[![Workflow demo](docs/workflow_image.gif)]
+Here is a GIF showing the various workflows in action,
+![Workflow demo](docs/workflow_image.gif)
 
 #### Download and use sample workflows provided with this repo:
 
@@ -678,25 +680,25 @@ Here is a GIF showing the workflows in action,
 
 **ComfyUI running locally** - If you are running ComfyUI locally or at a place other than GCP, you need to perform the following steps to download the sample workflows. These steps assume, you have already downloaded this repo by following the instructions in [ComfyUI running locally](#comfyui-running-locally)
 
-1. Open the terminal on the machine running ComfyUI and switch to the custom node directory of you ComfyUI installation: 
-   ```sh
-   cd YOUR_COMFYUI_DIRECTORY/custom_nodes
-
-   Note : Replace YOUR_COMFYUI_DIRECTORY with your ComfyUI installation directory. E.g if your ComfyUI is installed at /home/user/username/comfyui, it will be your YOUR_COMFYUI_DIRECTORY
-   ```
-2. Copy the workflows by running the following command: 
+1. Open the terminal on the machine that is running ComfyUI and change to the directory where ComfyUI is installed. 
     ```sh
-    mv comfyui-google-genmedia-custom-nodes/sample-workflows/*json YOUR_COMFYUI_DIRECTORY/user/default/worklows
+    cd <PATH_TO_COMFYUI_INSTALLATION>
 
-    Note : Replace YOUR_COMFYUI_DIRECTORY with your ComfyUI installation directory. E.g if your ComfyUI is installed at /home/user/username/comfyui, it will be your YOUR_COMFYUI_DIRECTORY
+    E.g if your ComfyUI is running from "/home/user/username/ComfyUI", replace <PATH_TO_COMFYUI_INSTALLATION> with "/home/user/username/"
     ```
-3. Install dependencies for the workflows to function:
+2. Change to the custom_nodes folder.
     ```sh
-    mv comfyui-google-genmedia-custom-nodes/sample-workflows/input-images/* YOUR_COMFYUI_DIRECTORY/input/
-
-    Note : Replace YOUR_COMFYUI_DIRECTORY with your ComfyUI installation directory. E.g if your ComfyUI is installed at /home/user/username/comfyui, it will be your YOUR_COMFYUI_DIRECTORY
+    cd ComfyUI/custom_nodes
     ```
-4. Open ComfyUI manager,click Custom Nodes Manager and search for ComfyUI-VideoHelperSuite and install the latest version. This is required as we use some of the VHS nodes in the example workflows.
+3. Copy the workflows by running the following command: 
+    ```sh
+    mv comfyui-google-genmedia-custom-nodes/sample-workflows/*json ../user/default/workflows/
+    ```
+4. Install dependencies for the workflows to function:
+    ```sh
+    mv comfyui-google-genmedia-custom-nodes/sample-workflows/input-images/* .../input/
+    ```
+5. Open ComfyUI manager,click Custom Nodes Manager and search for ComfyUI-VideoHelperSuite and install the latest version. This is required as we use some of the VHS nodes in the example workflows.
 6. Restart ComfyUI via ComfyUI manager or manually. Check in the left side menu under workflows, the new .json workflow files should be present now. You can click on the files to load the workflows and then `RUN` them.
-    >> Note that some of these workflows require an input parameter `output_gcs_uri`. This is required in scenarios such as when you are generating a lossless video using veo3 and the APIs can not return a huge video file so it expects an output bucket to be provided as input where it saves the output video. The custom node will thrown an interactive error saying `output_gcs_uri` must be provided.
-If you encounter such situation, pass the bucket in the input parameter `output_gcs_uri` in the format `gs://YOUR_BUCKET_NAME` to the custom nodes. If you do not have a GCS bucket, create it in your Google Cloud project first.
+    >> Note that some of these workflows require an input parameter `output_gcs_uri`. This is required in scenarios such as when you are generating a lossless video using veo3 and the APIs can not return a huge video file so it expects an output bucket to be provided as input where it saves the output video. The custom node will throw an interactive error saying `output_gcs_uri` must be provided.
+    If you encounter such situation, provide the bucket in the input parameter `output_gcs_uri` in the format `gs://YOUR_BUCKET_NAME` to the custom nodes. If you do not have a GCS bucket, create it in your Google Cloud project first.
