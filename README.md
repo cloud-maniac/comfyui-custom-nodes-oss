@@ -95,7 +95,7 @@ If you want to run ComfyUI on GKE and use these custom nodes, follow the [ComfyU
     export USER_EMAIL=`gcloud auth list --filter=status:ACTIVE --format="value(account)"`
 
     Replace <YOUR_PROJECT_ID> with the GCP project id you plan to use
-    Replace <YOUR_SERVICE_ACCOUNT_ID> with the name of the service account you will use to access Google Cloud with ComfyUI
+    Replace <YOUR_SERVICE_ACCOUNT_ID> with the name of the service account you will use to access Google Cloud with ComfyUI. It will be created in the next step.
     ```
 - Set Google Cloud project.
     ```sh
@@ -111,11 +111,11 @@ If you want to run ComfyUI on GKE and use these custom nodes, follow the [ComfyU
     ```sh
     gcloud projects add-iam-policy-binding $PROJECT_ID \
     --member="serviceAccount:${SERVICE_ACCOUNT_ID}@${PROJECT_ID}.iam.gserviceaccount.com" \
-    --role="roles/storage.objectUser"
+    --role="roles/storage.objectUser" --condition=None
 
     gcloud projects add-iam-policy-binding $PROJECT_ID \
     --member="serviceAccount:${SERVICE_ACCOUNT_ID}@${PROJECT_ID}.iam.gserviceaccount.com" \
-    --role="roles/aiplatform.user"
+    --role="roles/aiplatform.user" --condition=None
     ```
 - Grant the Service Account Token Creator role to your user on the service account. This role lets your user account to assume the Service Account created in previous steps: 
     ```sh
