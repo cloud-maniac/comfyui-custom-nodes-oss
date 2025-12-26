@@ -566,6 +566,47 @@ This node integrates the Gemini 2.5 Flash Image model, designed for high-speed i
 | :--- | :--- | :--- |
 | **Generated Image** | `IMAGE` | The generated content as a batch of images (torch tensors). |
 
+### Gemini 3 Pro Image (Nano Banana Pro 🍌)
+
+Category: `Google AI/GeminiProImage`
+
+This node integrates the Gemini 3 Pro Image model, designed for high-speed image generation and editing tasks.
+
+
+#### Required Inputs
+
+| Parameter | Type | Default | Description |
+| :--- | :--- | :--- | :--- |
+| **model** | `Dropdown` | `GEMINI_3_PRO_IMAGE` | Selects the specific Gemini Pro Image model version. |
+| **prompt** | `STRING` | _"A vivid landscape painting of a futuristic city."_ | Multiline string. The main text description for the image generation. |
+| **aspect_ratio** | `Dropdown` | `16:9` | The aspect ratio of the generated image. Options include `1:1`, `2:3`, `3:2`, `3:4`, `4:3`, `4:5`, `5:4`, `9:6`, `16:9`, `21:9`. |
+| **temperature** | `FLOAT` | `0.7` | Controls randomness. Higher values are more creative; lower are more deterministic. **Min:** 0.0, **Max:** 1.0. |
+| **top_p** | `FLOAT` | `1.0` | Cumulative probability cutoff for token selection. **Min:** 0.0, **Max:** 1.0. |
+| **top_k** | `INT` | `32` | Limits token selection to the top K most probable tokens. **Min:** 1, **Max:** 64. |
+| **harassment_threshold**| `Dropdown` | `BLOCK_MEDIUM...` | Safety filter level for harassment content. |
+| **hate_speech_threshold**| `Dropdown` | `BLOCK_MEDIUM...` | Safety filter level for hate speech content. |
+| **sexually_explicit_threshold**| `Dropdown` | `BLOCK_MEDIUM...` | Safety filter level for sexually explicit content. |
+| **dangerous_content_threshold**| `Dropdown` | `BLOCK_MEDIUM...` | Safety filter level for dangerous content. |
+| **gcp_project_id** | `STRING` | `""` | Manually specify GCP Project ID. If empty, uses environment defaults. |
+| **gcp_region** | `STRING` | `global` | Manually specify GCP Region. Default is `global`. |
+
+#### Optional Inputs
+
+| Parameter | Type | Default | Description |
+| :--- | :--- | :--- | :--- |
+| **image1** | `IMAGE` | _N/A_ | Primary input image tensor for image editing or reference tasks. |
+| **image2** | `IMAGE` | _N/A_ | Secondary input image tensor. |
+| **image3** | `IMAGE` | _N/A_ | Tertiary input image tensor. |
+| **system_instruction** | `STRING` | `""` | Multiline string. System-level instructions to guide the model's behavior. |
+
+
+#### Outputs
+
+| Name | Type | Description |
+| :--- | :--- | :--- |
+| **Generated Image** | `IMAGE` | The generated content as a batch of images (torch tensors). |
+
+
 ### Virtual Try-On
 
 Category: `Google AI/Virtual try-on`

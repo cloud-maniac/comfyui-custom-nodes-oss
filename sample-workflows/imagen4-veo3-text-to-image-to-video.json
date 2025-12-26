@@ -1,7 +1,7 @@
 {
   "id": "a466bac6-78d9-49f4-8fde-3f8af8774e14",
   "revision": 0,
-  "last_node_id": 11,
+  "last_node_id": 25,
   "last_link_id": 14,
   "nodes": [
     {
@@ -34,7 +34,7 @@
       "widgets_values": []
     },
     {
-      "id": 5,
+      "id": 25,
       "type": "VeoVideoSaveAndPreview",
       "pos": [
         2906.392333984375,
@@ -161,7 +161,7 @@
         8,
         true,
         1,
-        "${output_bucket_uri}",
+        "",
         "",
         0,
         "randomize",
@@ -191,7 +191,7 @@
       14,
       11,
       0,
-      5,
+      25,
       0,
       "VEO_VIDEO"
     ]
