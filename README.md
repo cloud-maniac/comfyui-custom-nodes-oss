@@ -124,6 +124,10 @@ If you want to run ComfyUI on GKE and use these custom nodes, follow the [ComfyU
     --member="user:${USER_EMAIL}" \
     --role="roles/iam.serviceAccountTokenCreator"
     ```
+- Now, set yourself to impersonate the service account
+  ```sh
+  gcloud auth application-default login --impersonate-service-account=${SERVICE_ACCOUNT_ID}@${PROJECT_ID}.iam.gserviceaccount.com
+  ```
 
 ## Node features
 
