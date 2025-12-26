@@ -88,35 +88,73 @@ def setup_custom_package_logger():
 
 setup_custom_package_logger()
 
-MODULES = [
-    (".google_genmedia.gemini_nodes", "GEMINI"),
-    (".google_genmedia.gemini_flash_image_node", "GEMINI_FLASH_25_IMAGE"),
-    (".google_genmedia.helper_nodes", "HELPER"),
-    (".google_genmedia.imagen3_nodes", "IMAGEN3"),
-    (".google_genmedia.imagen4_nodes", "IMAGEN4"),
-    (".google_genmedia.lyria2_nodes", "LYRIA2"),
-    (".google_genmedia.veo2_nodes", "VEO2"),
-    (".google_genmedia.veo3_nodes", "VEO3"),
-    (".google_genmedia.virtual_try_on", "VTO"),    
-]
 
-# Initialize combined mappings
-NODE_CLASS_MAPPINGS = {}
-NODE_DISPLAY_NAME_MAPPINGS = {}
+from .gemini_flash_image_node import (
+    NODE_CLASS_MAPPINGS as GEMINI_FLASH_25_IMAGE_NODE_CLASS_MAPPINGS,
+)
+from .gemini_flash_image_node import (
+    NODE_DISPLAY_NAME_MAPPINGS as GEMINI_FLASH_25_IMAGE_NODE_DISPLAY_NAME_MAPPINGS,
+)
+from .gemini_nodes import NODE_CLASS_MAPPINGS as GEMINI_NODE_CLASS_MAPPINGS
+from .gemini_nodes import (
+    NODE_DISPLAY_NAME_MAPPINGS as GEMINI_NODE_DISPLAY_NAME_MAPPINGS,
+)
+from .gemini_pro_image_node import (
+    NODE_CLASS_MAPPINGS as GEMINI_PRO_IMAGE_NODE_CLASS_MAPPINGS,
+)
+from .gemini_pro_image_node import (
+    NODE_DISPLAY_NAME_MAPPINGS as GEMINI_PRO_IMAGE_NODE_DISPLAY_NAME_MAPPINGS,
+)
+from .helper_nodes import NODE_CLASS_MAPPINGS as HELPER_NODE_CLASS_MAPPINGS
+from .helper_nodes import (
+    NODE_DISPLAY_NAME_MAPPINGS as HELPER_NODE_DISPLAY_NAME_MAPPINGS,
+)
+from .imagen3_nodes import NODE_CLASS_MAPPINGS as IMAGEN3_NODE_CLASS_MAPPINGS
+from .imagen3_nodes import (
+    NODE_DISPLAY_NAME_MAPPINGS as IMAGEN3_NODE_DISPLAY_NAME_MAPPINGS,
+)
+from .imagen4_nodes import NODE_CLASS_MAPPINGS as IMAGEN4_NODE_CLASS_MAPPINGS
+from .imagen4_nodes import (
+    NODE_DISPLAY_NAME_MAPPINGS as IMAGEN4_NODE_DISPLAY_NAME_MAPPINGS,
+)
+from .lyria2_nodes import NODE_CLASS_MAPPINGS as LYRIA2_NODE_CLASS_MAPPINGS
+from .lyria2_nodes import (
+    NODE_DISPLAY_NAME_MAPPINGS as LYRIA2_NODE_DISPLAY_NAME_MAPPINGS,
+)
+from .veo2_nodes import NODE_CLASS_MAPPINGS as VEO2_NODE_CLASS_MAPPINGS
+from .veo2_nodes import NODE_DISPLAY_NAME_MAPPINGS as VEO2_NODE_DISPLAY_NAME_MAPPINGS
+from .veo3_nodes import NODE_CLASS_MAPPINGS as VEO3_NODE_CLASS_MAPPINGS
+from .veo3_nodes import NODE_DISPLAY_NAME_MAPPINGS as VEO3_NODE_DISPLAY_NAME_MAPPINGS
+from .virtual_try_on import NODE_CLASS_MAPPINGS as VTO_NODE_CLASS_MAPPINGS
+from .virtual_try_on import NODE_DISPLAY_NAME_MAPPINGS as VTO_NODE_DISPLAY_NAME_MAPPINGS
 
-for module_path, prefix in MODULES:
-    try:
-        module = __import__(
-            module_path,
-            globals(),
-            locals(),
-            ["NODE_CLASS_MAPPINGS", "NODE_DISPLAY_NAME_MAPPINGS"],
-            0,
-        )
-        NODE_CLASS_MAPPINGS.update(module.NODE_CLASS_MAPPINGS)
-        NODE_DISPLAY_NAME_MAPPINGS.update(module.NODE_DISPLAY_NAME_MAPPINGS)
-    except ImportError as e:
-        print(f"Warning: Could not import module {module_path}. Error: {e}")
+# Combine all node class mappings
+NODE_CLASS_MAPPINGS = {
+    **IMAGEN3_NODE_CLASS_MAPPINGS,
+    **IMAGEN4_NODE_CLASS_MAPPINGS,
+    **LYRIA2_NODE_CLASS_MAPPINGS,
+    **VEO2_NODE_CLASS_MAPPINGS,
+    **VEO3_NODE_CLASS_MAPPINGS,
+    **GEMINI_NODE_CLASS_MAPPINGS,
+    **HELPER_NODE_CLASS_MAPPINGS,
+    **VTO_NODE_CLASS_MAPPINGS,
+    **GEMINI_FLASH_25_IMAGE_NODE_CLASS_MAPPINGS,
+    **GEMINI_PRO_IMAGE_NODE_CLASS_MAPPINGS,
+}
+
+# Combine all node display name mappings
+NODE_DISPLAY_NAME_MAPPINGS = {
+    **IMAGEN3_NODE_DISPLAY_NAME_MAPPINGS,
+    **IMAGEN4_NODE_DISPLAY_NAME_MAPPINGS,
+    **LYRIA2_NODE_DISPLAY_NAME_MAPPINGS,
+    **VEO2_NODE_DISPLAY_NAME_MAPPINGS,
+    **VEO3_NODE_DISPLAY_NAME_MAPPINGS,
+    **GEMINI_NODE_DISPLAY_NAME_MAPPINGS,
+    **HELPER_NODE_DISPLAY_NAME_MAPPINGS,
+    **VTO_NODE_DISPLAY_NAME_MAPPINGS,
+    **GEMINI_FLASH_25_IMAGE_NODE_DISPLAY_NAME_MAPPINGS,
+    **GEMINI_PRO_IMAGE_NODE_DISPLAY_NAME_MAPPINGS,
+}
 
 WEB_DIRECTORY = "./web"
 
